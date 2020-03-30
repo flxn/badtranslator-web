@@ -9,7 +9,7 @@
         <img src="../assets/social-distancing-200.png" alt="Social-Distancing approved!" width="200" height="200">
       </div>
     </h1>
-    
+
     <h2 class="subtitle">
       A game of
       <em>Chinese Whispers</em> but with online translators.
@@ -296,7 +296,7 @@ export default {
   },
   methods: {
     async getAvailableLanguages() {
-      const res = await axios.get("http://localhost:3000/languages");
+      const res = await axios.get(process.env.API_ENDPOINT + "/languages");
       this.availableLanguages = res.data;
     },
     randomTransform() {
@@ -327,7 +327,7 @@ export default {
     async translate(text, from, to) {
       let res;
       try {
-        res = await axios.post("http://localhost:3000/translate", {
+        res = await axios.post(process.env.API_ENDPOINT + "/translate", {
           text: text,
           from: from,
           to: to
