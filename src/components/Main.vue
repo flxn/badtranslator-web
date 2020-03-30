@@ -264,6 +264,7 @@ export default {
   },
   data() {
     return {
+      endpoint:  process.env.VUE_APP_API_ENDPOINT,
       broken1: this.randomTransform(),
       broken2: this.randomTransform(),
       broken3: this.randomTransform(),
@@ -296,7 +297,7 @@ export default {
   },
   methods: {
     async getAvailableLanguages() {
-      const res = await axios.get(process.env.API_ENDPOINT + "/languages");
+      const res = await axios.get(this.endpoint + "/languages");
       this.availableLanguages = res.data;
     },
     randomTransform() {
@@ -327,7 +328,7 @@ export default {
     async translate(text, from, to) {
       let res;
       try {
-        res = await axios.post(process.env.API_ENDPOINT + "/translate", {
+        res = await axios.post(this.endpoint + "/translate", {
           text: text,
           from: from,
           to: to
