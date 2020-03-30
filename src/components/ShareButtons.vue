@@ -64,7 +64,7 @@
 
 
 <script>
-const url = 'https://flxn.de/qrcode2stl/';
+const url = 'https://badtranslator.net/';
 const imageUrl = 'https://flxn.de/qrcode2stl/img/generate_code.9da711b0.gif';
 const twitterhandle = 'flxnde';
 
@@ -77,7 +77,7 @@ export default {
     },
     text: {
         type: String,
-        default: 'Play the "Telephone Game" with online translators. Translate your text through random languages and see what comes out.',
+        default: 'On BadTranslator.net you can play the "Telephone Game" with online translators. Translate your text through random languages and see what comes out.',
     },
     callToAction: {
         type: String,
