@@ -3,6 +3,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
         <img src="../assets/logo.png" />
+        <span id="site-title">BadTranslator.net</span>
       </a>
 
       <a
@@ -71,6 +72,8 @@ export default {
 
 <style>
 #site-title {
-  font-style: bold;
+  margin-left: 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
 }
 </style>
