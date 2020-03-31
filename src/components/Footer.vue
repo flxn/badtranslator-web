@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="content has-text-centered">
       <p>
-        <strong>qrcode2stl</strong> by <a href="https://flxn.de">Felix Stein</a>.
+        <strong>BadTranslator.net</strong> by <a href="https://flxn.de">Felix Stein</a>.
       </p>
       <p>
         If you like my stuff you can follow me on

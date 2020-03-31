@@ -298,6 +298,7 @@ export default {
   methods: {
     async getAvailableLanguages() {
       const res = await axios.get(this.endpoint + "/languages");
+      console.log(res.data);
       this.availableLanguages = res.data;
     },
     randomTransform() {
