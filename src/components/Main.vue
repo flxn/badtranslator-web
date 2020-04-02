@@ -6,7 +6,12 @@
       <div :style="{transform: broken3}">Trans</div>
       <div :style="{transform: broken4}">lator</div>
       <div id="pandemic-tag">
-        <img src="../assets/social-distancing-200.png" alt="Social-Distancing approved!" width="200" height="200">
+        <img
+          src="../assets/social-distancing-200.png"
+          alt="Social-Distancing approved!"
+          width="200"
+          height="200"
+        />
       </div>
     </h1>
 
@@ -19,45 +24,59 @@
     <div class="columns">
       <div class="column">
         <div class="inputForm">
-          <div class="field is-horizontal">
-            <div class="field-body">
-              <div class="field">
-                <div class="control">
-                  <div :class="{'select': true, 'is-danger': errorNoLanguage}">
-                    <select
-                      name="inputLanguage"
-                      id="inputLanguage"
-                      v-model="inputLanguage"
-                      @change="languageChanged"
-                    >
-                      <option value disabled default selected>Select your language</option>
-                      <option
-                        v-for="lang of Object.keys(availableLanguages)"
-                        :key="lang"
-                        :value="lang"
-                      >{{availableLanguages[lang]}}</option>
-                    </select>
-                  </div>
-                </div>
+          <div class="field input-controls">
+            <div class="control">
+              <div :class="{'select': true, 'is-danger': errorNoLanguage}">
+                <select
+                  name="inputLanguage"
+                  id="inputLanguage"
+                  v-model="inputLanguage"
+                  @change="languageChanged"
+                >
+                  <option value disabled default selected>Select your language</option>
+                  <option
+                    v-for="lang of Object.keys(availableLanguages)"
+                    :key="lang"
+                    :value="lang"
+                  >{{availableLanguages[lang]}}</option>
+                </select>
               </div>
-              <div class="field">
-                <div class="control">
-                  <div class="select is-pulled-right">
-                    <select
-                      name="translationRounds"
-                      id="translationRounds"
-                      v-model="translationRounds"
-                      @change="translationRounds"
-                    >
-                      <option value="3">3 rounds of translation</option>
-                      <option value="4">4 rounds of translation</option>
-                      <option value="5">5 rounds of translation</option>
-                      <option value="6">6 rounds of translation</option>
-                      <option value="7">7 rounds of translation</option>
-                      <option value="8">8 rounds of translation</option>
-                    </select>
-                  </div>
-                </div>
+            </div>
+
+            <div class="control">
+              <div class="select">
+                <select
+                  name="translationRounds"
+                  id="translationRounds"
+                  v-model="translationRounds"
+                  title="Select how many rounds of translation you like."
+                >
+                  <option value="3">Translate 3 rounds</option>
+                  <option value="4">Translate 4 rounds</option>
+                  <option value="5">Translate 5 rounds</option>
+                  <option value="6">Translate 6 rounds</option>
+                  <option value="7">Translate 7 rounds</option>
+                  <option value="8">Translate 8 rounds</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <div class="select">
+                <select
+                  name="exampleSelect"
+                  id="exampleSelect"
+                  v-model="selectedExampleIdx"
+                  @change="onExampleSelected"
+                >
+                  <option value="-1" selected disabled default>Use an example</option>
+                  <option
+                    v-for="(ex, index) of examples"
+                    :key="`ex-${index}`"
+                    :value="index"
+                  >{{ex.title}}</option>
+                </select>
               </div>
             </div>
           </div>
@@ -72,6 +91,7 @@
                 rows="6"
                 placeholder="Input any text"
                 v-model="inputText"
+                @change="onInputTextChanged"
               ></textarea>
               <span class="counter">{{inputText.length}}/{{maxInputLength}}</span>
             </div>
@@ -149,7 +169,6 @@
             <em>telephone</em> game, also called
             <em>chinese whispers</em>, just with online translation services instead of real people.
             Your text is translated through multiple random languages and then back to the starting language.
-            <br />It's especially funny for fictional texts or lyrics. Try it out!
           </p>
           <p>
             Here is the first paragraph of the
@@ -167,7 +186,6 @@
             The reason for change is the inability to understand the cause of depression or intolerance, irregular corrections and silence.
             <br />This game is often a party game or a game for children. It is often a metaphor for a growing error, especially rumours or rumours, or at all, a lack of reliability of human memory or oral tradition.
           </blockquote>
-          <p>As a translation provider I'm currently using the Microsoft Azure Translator Text API</p>
         </div>
       </div>
     </div>
@@ -264,7 +282,7 @@ export default {
   },
   data() {
     return {
-      endpoint:  process.env.VUE_APP_API_ENDPOINT,
+      endpoint: process.env.VUE_APP_API_ENDPOINT,
       broken1: this.randomTransform(),
       broken2: this.randomTransform(),
       broken3: this.randomTransform(),
@@ -283,7 +301,37 @@ export default {
       translationInProgress: false,
       errorMessages: [],
       showDonationModal: false,
-      translationCount: 0
+      translationCount: 0,
+      selectedExampleIdx: -1,
+      examples: [
+        {
+          title: "Queen - Bohemian Rhapsody",
+          text:
+            "Is this the real life?\nIs this just fantasy?\nCaught in a landslide,\nNo escape from reality.\n\nOpen your eyes,\nLook up to the skies and see,\nI'm just a poor boy, I need no sympathy,\nBecause I'm easy come, easy go,\nLittle high, little low,\nAny way the wind blows doesn't really matter to me, to me.\n\nMama, just killed a man,\nPut a gun against his head,\nPulled my trigger, now he's dead.\nMama, life had just begun,\nBut now I've gone and thrown it all away.\n\nMama, ooh,\nDidn't mean to make you cry,\nIf I'm not back again this time tomorrow,\nCarry on, carry on as if nothing really matters."
+        },
+        {
+          title: "Avril Lavigne - Sk8er Boi",
+          text:
+            "He was a boy.\nShe was a girl.\nCan I make it anymore obvious?\nHe was a punk.\nShe did ballet.\nWhat more can I say?\nHe wanted her.\nShe'd never tell.\nSecretly she wanted him as well.\nAnd all of her friends stuck up their nose.\nThey had a problem with his baggy clothes."
+        },
+        {
+          title: "Lord's Prayer",
+          text:
+            "Our Father in heaven,\nhallowed be your name,\nyour kingdom come,\nyour will be done,\non earth as in heaven.\nGive us today our daily bread.\nForgive us our sins\nas we forgive those who sin against us.\nSave us from the time of trial\nand deliver us from evil.\nFor the kingdom, the power, and the glory are yours\nnow and for ever. Amen."
+        },
+        {
+          title: "Universal Declaration of Human Rights",
+          text: "Article I\nAll human beings are born free and equal in dignity and rights. They are\nendowed with reason and conscience and should act towards one another in a\nspirit of brotherhood.\n\nArticle 2\nEveryone is entitled to all the rights and freedoms set forth in this Declaration,\nwithout distinction of any kind, such as race, colour, sex, language, religion,\npolitical or other opinion, national or social origin, property, birth or other status.\nFurthermore, no distinction shall be made on the basis of the political,\njurisdictional or international status of the country or territory to which a person\nbelongs, whether it be independent, trust, non-self-governing or under any other\nlimitation of sovereignty.\n\nArticle 3\nEveryone has the right to life, liberty and the security of person."
+        },
+        {
+          title: "Pride and Prejudice",
+          text: "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.\nHowever little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families that he is considered as the rightful property of some one or other of their daughters.\n\"My dear Mr. Bennet,\" said his lady to him one day, \"have you heard that Netherfield Park is let at last?\"\nMr. Bennet replied that he had not.\n\"But it is,\" returned she; \"for Mrs. Long has just been here, and she told me all about it.\"\nMr. Bennet made no answer."
+        },
+        {
+          title: "I have a dream (Martin Luther King)",
+          text: "And so even though we face the difficulties of today and tomorrow, I still have a dream. It is a dream deeply rooted in the American dream.\n\nI have a dream that one day this nation will rise up and live out the true meaning of its creed: \"We hold these truths to be self-evident, that all men are created equal.\"\n\nI have a dream that one day on the red hills of Georgia, the sons of former slaves and the sons of former slave owners will be able to sit down together at the table of brotherhood.\n\nI have a dream that one day even the state of Mississippi, a state sweltering with the heat of injustice, sweltering with the heat of oppression, will be transformed into an oasis of freedom and justice."
+        }
+      ],
     };
   },
   mounted() {
@@ -422,6 +470,15 @@ export default {
     },
     languageChanged() {
       window.localStorage.setItem("lang", this.inputLanguage);
+    },
+    onExampleSelected() {
+      if (this.selectedExampleIdx >= 0) {
+        this.inputText = this.examples[this.selectedExampleIdx].text;
+        this.inputLanguage = "en";
+      }
+    },
+    onInputTextChanged() {
+      this.selectedExampleIdx = -1;
     },
     increaseCount() {
       this.translationCount =
@@ -581,8 +638,8 @@ export default {
   white-space: pre-line;
   padding: 10px;
   text-align: left;
-  -webkit-animation: fade-in .1s ease-in 1;
-  animation: fade-in .1s ease-in 1;
+  -webkit-animation: fade-in 0.1s ease-in 1;
+  animation: fade-in 0.1s ease-in 1;
 }
 
 #pandemic-tag {
@@ -591,6 +648,16 @@ export default {
   margin-bottom: -20px;
   width: 100px;
   height: 100px;
+}
+
+.input-controls {
+  text-align: left;
+  margin-bottom: ;
+}
+
+.input-controls > .control {
+  display: inline-block;
+  margin-right: 15px;
 }
 </style>
 
