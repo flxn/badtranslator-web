@@ -51,12 +51,12 @@
                   v-model="translationRounds"
                   title="Select how many rounds of translation you like."
                 >
-                  <option value="3">Translate 3 rounds</option>
-                  <option value="4">Translate 4 rounds</option>
-                  <option value="5">Translate 5 rounds</option>
-                  <option value="6">Translate 6 rounds</option>
-                  <option value="7">Translate 7 rounds</option>
-                  <option value="8">Translate 8 rounds</option>
+                  <option value="3">Translate 3 times</option>
+                  <option value="4">Translate 4 times</option>
+                  <option value="5">Translate 5 times</option>
+                  <option value="6">Translate 6 times</option>
+                  <option value="7">Translate 7 times</option>
+                  <option value="8">Translate 8 times</option>
                 </select>
               </div>
             </div>
