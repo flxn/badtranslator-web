@@ -346,8 +346,9 @@ export default {
   methods: {
     async getAvailableLanguages() {
       const res = await axios.get(this.endpoint + "/languages");
-      console.log(res.data);
-      this.availableLanguages = res.data;
+      for(const lang of res.data) {
+        this.availableLanguages[lang.code] = lang.name;
+      }
     },
     randomTransform() {
       return `rotateZ(${Math.round(Math.random() * 12) - 6}deg)`;
