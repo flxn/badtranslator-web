@@ -5,7 +5,7 @@
       <!--<div :style="{transform: broken2}">ken</div>-->
       <div :style="{transform: broken3}">Trans</div>
       <div :style="{transform: broken4}">lator</div>
-      <div id="pandemic-tag">
+      <div id="pandemic-tag" class="is-hidden-mobile">
         <img
           src="../assets/social-distancing-200.png"
           alt="Social-Distancing approved!"
@@ -105,7 +105,10 @@
             @click="startTranslation"
           >Translate!</button>
         </div>
-
+      </div>
+    </div>
+    <div class="columns is-mobile">
+      <div class="column">
         <div id="translation-steps">
           <div
             class="step"
@@ -114,7 +117,7 @@
             @click="step.textVisible = !step.textVisible"
             :title="`Show ${step.to} translation`"
           >
-            <div class="columns">
+            <div class="columns is-mobile">
               <div class="board from column">
                 <div
                   class="letter"
@@ -141,7 +144,7 @@
 
         <div id="result">
           <div class="title" v-if="outputText">Output</div>
-          <p class="output" v-if="outputText">{{outputText}}</p>
+          <p class="output box" v-if="outputText">{{outputText}}</p>
           <ShareButtons
             v-if="outputText"
             style="margin-top: 30px"
@@ -320,16 +323,16 @@ export default {
             "Our Father in heaven,\nhallowed be your name,\nyour kingdom come,\nyour will be done,\non earth as in heaven.\nGive us today our daily bread.\nForgive us our sins\nas we forgive those who sin against us.\nSave us from the time of trial\nand deliver us from evil.\nFor the kingdom, the power, and the glory are yours\nnow and for ever. Amen."
         },
         {
-          title: "Universal Declaration of Human Rights",
-          text: "Article I\nAll human beings are born free and equal in dignity and rights. They are\nendowed with reason and conscience and should act towards one another in a\nspirit of brotherhood.\n\nArticle 2\nEveryone is entitled to all the rights and freedoms set forth in this Declaration,\nwithout distinction of any kind, such as race, colour, sex, language, religion,\npolitical or other opinion, national or social origin, property, birth or other status.\nFurthermore, no distinction shall be made on the basis of the political,\njurisdictional or international status of the country or territory to which a person\nbelongs, whether it be independent, trust, non-self-governing or under any other\nlimitation of sovereignty.\n\nArticle 3\nEveryone has the right to life, liberty and the security of person."
-        },
-        {
           title: "Pride and Prejudice",
           text: "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.\nHowever little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families that he is considered as the rightful property of some one or other of their daughters.\n\"My dear Mr. Bennet,\" said his lady to him one day, \"have you heard that Netherfield Park is let at last?\"\nMr. Bennet replied that he had not.\n\"But it is,\" returned she; \"for Mrs. Long has just been here, and she told me all about it.\"\nMr. Bennet made no answer."
         },
         {
-          title: "I have a dream (Martin Luther King)",
-          text: "And so even though we face the difficulties of today and tomorrow, I still have a dream. It is a dream deeply rooted in the American dream.\n\nI have a dream that one day this nation will rise up and live out the true meaning of its creed: \"We hold these truths to be self-evident, that all men are created equal.\"\n\nI have a dream that one day on the red hills of Georgia, the sons of former slaves and the sons of former slave owners will be able to sit down together at the table of brotherhood.\n\nI have a dream that one day even the state of Mississippi, a state sweltering with the heat of injustice, sweltering with the heat of oppression, will be transformed into an oasis of freedom and justice."
+          title: "Cheesecake Recipe",
+          text: "New York Style Cheesecake Recipe\n\nIngredients:\n\nFilling:\n12 oz. softened cream cheese\n1/2 tsp. vanilla extract\n1 c. sugar\n3 eggs\n\nCrust:\n1 c. graham cracker crumbs\n¼ c. sugar\n7 Tbs. melted butter\n\nFoods for Garnish:\nChocolate glaze (recipe below)\nWhipped cream\nCherries\n\nDirections:\nPreheat oven to 350 degrees F.\n\nFilling:\nBeat the cream cheese and then mix in sugar and vanilla while beating until well blended. Add in eggs and combine. Pour mixture into prepared crust. Bake for 45 minutes. Remove from oven and let cool to room temperature. Refrigerate overnight. When ready to serve, top with chocolate glaze, cherries, and whipped cream.\n\nCrust:\nIn a medium size bowl, combine the graham cracker crumbs with the butter and sugar. Mix well and pour into an 8-inch springform cake pan. Make sure to press against the sides and bottom of the pan. Place into oven and bake for 8 minutes. Let cool.\n",
+        },
+        {
+          title: "Macaroni And Cheese Recipe",
+          text: "Ingredients:\n1/2 pound cheddar cheese, grated\n1 teaspoon cornstarch\n2 quarts water\n1 tablespoon salt\n2 cups uncooked elbow macaroni\n2 tablespoons unsalted butter\n2 tablespoons flour\n1 1/4 cup milk, heated until steamy\n1/2 teaspoon lemon juice\n1/4 cup ham\n\nIn a medium sized bowl, mix cornstarch with the grated cheese. The cornstarch will help the cheese from getting too stringy.\nHeat 2 quarts of water with a tablespoon of salt to a rolling boil in thick-bottomed saucepan. \nAdd 2 cups of elbow macaroni and follow the cooking time instructions on the package, minus about 2 minutes.\nWhile the macaroni is cooking, prepare the sauce: Melt 2 Tbsp butter in a large saucepan on medium heat. Whisk in 2 Tbsp flour. Let cook for about a minute.\nSlowly dribble in 1 1/4 cups milk, while whisking until the sauce is smooth.\nSlowly add the grated cheese, whisking until smooth. Stir in the lemon juice.\nAdd the cooked macaroni and ham to the cheese sauce. Stir to combine.",
         }
       ],
     };
@@ -619,13 +622,13 @@ export default {
 
 .output {
   max-width: 900px;
+  color: #303030;
   margin: 0 auto;
   text-align: left;
   line-height: 1.75;
   font-size: 1.1rem;
-  color: #222;
   padding: 20px;
-  border: 1px solid #555;
+  border: 1px solid rgba(0,0,0,0.2);
   border-radius: 5px;
   white-space: pre-line;
 }
@@ -634,7 +637,7 @@ export default {
   max-width: 700px;
   margin: 0 auto;
   line-height: 1.75;
-  border: 1px solid #555;
+  border: 1px solid rgba(0,0,0,0.2);
   border-radius: 5px;
   white-space: pre-line;
   padding: 10px;
