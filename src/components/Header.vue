@@ -22,10 +22,12 @@
     <div class="navbar-menu" :class="{ 'is-active': navbarOpen }">
       <div class="navbar-end">
         <div class="navbar-item">
-          <!--<LanguageSelector />-->
+          <LanguageSelector />
         </div>
         <div class="navbar-item">
-          <ShareButtons />
+          <ShareButtons 
+            :title="$t('shareTitle')"
+            :text="$t('shareText')"/>
         </div>
         <div class="navbar-item">
           <div class="buttons">
@@ -45,13 +47,13 @@
 <script>
 import ShareButtons from './ShareButtons.vue';
 import { EventBus } from '../eventBus.js';
-//import LanguageSelector from './LanguageSelector.vue';
+import LanguageSelector from './LanguageSelector.vue';
 
 export default {
   name: 'Header',
   components: {
     ShareButtons,
-    //LanguageSelector,
+    LanguageSelector,
   },
   data() {
     return {

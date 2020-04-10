@@ -15,10 +15,7 @@
       </div>
     </h1>
 
-    <h2 class="subtitle">
-      A game of
-      <em>Chinese Whispers</em> but with online translators.
-      <br />Translate your message through multiple languages and back.
+    <h2 class="subtitle" v-html="$t('subtitle')">
     </h2>
 
     <div class="columns">
@@ -33,7 +30,7 @@
                   v-model="inputLanguage"
                   @change="languageChanged"
                 >
-                  <option value disabled default selected>Select your language</option>
+                  <option value disabled default selected>{{ $t('selectLanguage') }}</option>
                   <option
                     v-for="lang of Object.keys(availableLanguages)"
                     :key="lang"
@@ -49,14 +46,8 @@
                   name="translationRounds"
                   id="translationRounds"
                   v-model="translationRounds"
-                  title="Select how many rounds of translation you like."
-                >
-                  <option value="3">Translate 3 times</option>
-                  <option value="4">Translate 4 times</option>
-                  <option value="5">Translate 5 times</option>
-                  <option value="6">Translate 6 times</option>
-                  <option value="7">Translate 7 times</option>
-                  <option value="8">Translate 8 times</option>
+                  :title="$t('translationRoundsHelp')">
+                  <option v-for="n in [3,4,5,6,7,8]" :key="`rnd-${n}`" :value="n">{{ $t('translationRounds', {n: n}) }}</option>
                 </select>
               </div>
             </div>
@@ -70,7 +61,7 @@
                   v-model="selectedExampleIdx"
                   @change="onExampleSelected"
                 >
-                  <option value="-1" selected disabled default>Use an example</option>
+                  <option value="-1" selected disabled default>{{ $t('useExample') }}</option>
                   <option
                     v-for="(ex, index) of examples"
                     :key="`ex-${index}`"
@@ -89,7 +80,7 @@
                 :class="{'textarea': true, 'is-danger': errorNoText || inputText.length > maxInputLength}"
                 cols="30"
                 rows="6"
-                placeholder="Input any text"
+                :placeholder="$t('textInputPlaceholder')"
                 v-model="inputText"
                 @change="onInputTextChanged"
               ></textarea>
@@ -103,7 +94,7 @@
             id="translateButton"
             :class="{'button': true, 'is-primary': true, 'is-large': true, 'is-loading': translationInProgress}"
             @click="startTranslation"
-          >Translate!</button>
+          >{{ $t('translateButton') }}</button>
         </div>
       </div>
     </div>
@@ -148,8 +139,8 @@
           <ShareButtons
             v-if="outputText"
             style="margin-top: 30px"
-            callToAction="Share this translation"
-            title="This is what happens when you translate through random languages"
+            :callToAction="$t('shareTranslation')"
+            :title="$t('shareTranslationTitle')"
             :text="outputText"
           />
           <button
@@ -157,38 +148,16 @@
             @click="startTranslation"
             v-if="outputText"
             style="margin-top: 30px"
-          >Spin it again with other languages!</button>
-          <p v-if="outputText" style="margin-top: 30px">
-            Too crazy? Try lowering the rounds of translation.
-            <br />Not crazy enough? Try increasing the number of rounds.
-          </p>
+          >{{ $t('tryAgain') }}</button>
+          <p v-if="outputText" style="margin-top: 30px" v-html="$t('tryAgainDescription')"></p>
         </div>
 
         <hr />
-        <h3 class="title">How does it work?</h3>
+        <h3 class="title">{{ $t('howItWorksTitle') }}</h3>
         <div class="content" style="max-width: 960px; margin: 0 auto;">
-          <p>
-            This site is based on the
-            <em>telephone</em> game, also called
-            <em>chinese whispers</em>, just with online translation services instead of real people.
-            Your text is translated through multiple random languages and then back to the starting language.
-          </p>
-          <p>
-            Here is the first paragraph of the
-            <a
-              href="https://en.wikipedia.org/wiki/Chinese_whispers"
-              rel="noopener"
-              target="_blank"
-            >Wikipedia article for "Chinese Whispers"</a> translated through 6 different languages and back to english:
-          </p>
-          <blockquote style="text-align: left">
-            The Chinese will talk to you (English Commonwealth) or telephone (North American English) is a popular international children's game in which the players form the line, the first player comes with a message and the other person in a row was a crocodile.
-            The third player repeats another player's message. When the last player is added, they report a message they have heard about the entire team.
-            The first person then compares the original message with the final version. While this message is moving forward and part of joy, it ends naturally.
-            Errors usually go to "reel", so the announcement the last player published is very different from the first player, usually or effect.
-            The reason for change is the inability to understand the cause of depression or intolerance, irregular corrections and silence.
-            <br />This game is often a party game or a game for children. It is often a metaphor for a growing error, especially rumours or rumours, or at all, a lack of reliability of human memory or oral tradition.
-          </blockquote>
+          <p v-html="$t('howItWorksParagraph1')"></p>
+          <p v-html="$t('howItWorksParagraph2')"></p>
+          <blockquote style="text-align: left" v-html="$t('howItWorksQuote')"></blockquote>
         </div>
       </div>
     </div>
@@ -196,18 +165,11 @@
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Hi there 👋</p>
+          <p class="modal-card-title">{{ $t('supportModalTitle') }} 👋</p>
           <button class="delete" aria-label="close" @click="showDonationModal = false"></button>
         </header>
         <section class="modal-card-body">
-          <p>
-            Sorry to bother you but I see you already used BadTranslator {{translationCount}} times. I hope you enjoy this app and had a few good laughs 😊
-            <br />This site will always be free but the online translation services that I am using in the background sadly are not free to me, they are quite expensive actually.
-            <br />
-            <br />If you like this app please consider donating so I can keep this service running.
-            <br />
-            <br />
-          </p>
+          <p v-html="$t('supportModalText', {translationCount: translationCount})"></p>
           <a
             href="https://www.paypal.com/paypalme2/fstein42/3"
             class="button"
@@ -218,7 +180,7 @@
             <span class="icon">
               <i class="fab fa-paypal"></i>
             </span>
-            <span>Donate on PayPal</span>
+            <span v-html="$t('donateOnX', {x: 'PayPal'})"></span>
           </a>
           <a
             href="https://www.patreon.com/flxn"
@@ -230,7 +192,7 @@
             <span class="icon">
               <i class="fab fa-patreon"></i>
             </span>
-            <span>Donate on Patreon</span>
+            <span v-html="$t('donateOnX', {x: 'Patreon'})"></span>
           </a>
           <a
             href="https://ko-fi.com/flxn256"
@@ -247,23 +209,22 @@
                 alt="Support Me on Ko-Fi"
               />
             </span>
-            <span>Donate on Ko-Fi</span>
+            <span v-html="$t('donateOnX', {x: 'Ko-Fi'})"></span>
           </a>
-          <p>
-            <br />If you can't afford to donate that's totally okay but please consider telling your friends about BadTranslator.
-            <br />Thank you very much for your support and have fun!
-          </p>
+          <br/>
+          <br/>
+          <p v-html="$t('supportModalThanks')"></p>
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success" @click="setDonationModalDisabled()">I already donated 🥰</button>
+          <button class="button is-success" @click="setDonationModalDisabled()">{{ $t('alreadyDonated') }} 🥰</button>
           <button
             class="button is-warning"
             @click="setDonationModalPostponed()"
-          >I'll think about it 🙂</button>
+          >{{ $t('thinkingAboutDonating') }} 🙂</button>
           <button
             class="button is-danger"
             @click="setDonationModalDisabled()"
-          >Away you greedy idiot 😢</button>
+          >{{ $t('wontDonate') }} 😢</button>
         </footer>
       </div>
     </div>
@@ -656,7 +617,6 @@ export default {
 
 .input-controls {
   text-align: left;
-  margin-bottom: ;
 }
 
 .input-controls > .control {
