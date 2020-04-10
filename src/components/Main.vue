@@ -279,6 +279,10 @@ export default {
             "He was a boy.\nShe was a girl.\nCan I make it anymore obvious?\nHe was a punk.\nShe did ballet.\nWhat more can I say?\nHe wanted her.\nShe'd never tell.\nSecretly she wanted him as well.\nAnd all of her friends stuck up their nose.\nThey had a problem with his baggy clothes."
         },
         {
+          title: "Ring Verse (LOTR)",
+          text: "Three Rings for the Elven-kings under the sky,\nSeven for the Dwarf-lords in their halls of stone,\nNine for Mortal Men doomed to die,\nOne for the Dark Lord on his dark throne\nIn the Land of Mordor where the Shadows lie.\nOne Ring to rule them all, One Ring to find them,\nOne Ring to bring them all, and in the darkness bind them,\nIn the Land of Mordor where the Shadows lie."
+        },
+        {
           title: "Lord's Prayer",
           text:
             "Our Father in heaven,\nhallowed be your name,\nyour kingdom come,\nyour will be done,\non earth as in heaven.\nGive us today our daily bread.\nForgive us our sins\nas we forgive those who sin against us.\nSave us from the time of trial\nand deliver us from evil.\nFor the kingdom, the power, and the glory are yours\nnow and for ever. Amen."

@@ -79,10 +79,6 @@ export default {
         type: String,
         default: 'On BadTranslator.net you can play the "Telephone Game" with online translators. Translate your text through random languages and see what comes out.',
     },
-    callToAction: {
-        type: String,
-        default: 'Share this page',
-    },
   },
   data() {
     return {
