@@ -10,7 +10,7 @@ export default {
     changeLanguage: 'Sprache wechseln',
     supportMe: 'Unterstütze BadTranslator',
     shareButtonTitle: 'Teile diese Seite',
-    subtitle: 'Ein Spiel wie <em>Stille Post</em> aber mit Online Übersetzern. <br />Übersetze deine Nachricht durch zufällige Sprachen und wieder zurück in die Ausgangssprache.',
+    subtitle: 'Ein Siel wie <em>Stille Post</em> aber mit Online Übersetzern. <br />Übersetze deine Nachricht durch zufällige Sprachen und wieder zurück.',
     selectLanguage: 'Sprache des Eingabetexts',
     translationRoundsHelp: 'Wähle wie viele Runden übersetzt werden sollen.',
     translationRounds: 'Übersetze {n}-mal',
@@ -27,7 +27,7 @@ export default {
     howItWorksParagraph2: 'Hier ist ein Auszug aus dem\
       <a href="https://de.wikipedia.org/wiki/Stille_Post" rel="noopener" target="_blank">\
         Wikipedia-Artikel für Stille Post"</a>\
-      übersetzt durch 3 Sprachen und zurück in die Ausgangssprache:',
+      übersetzt durch 3 Sprachen und zurück ins Deutsche:',
     howItWorksQuote: "Die Dritte station (auch bekannt als \"das Ohr des letzteren\") ist ein no-brainer. Das Wort wird auch verwendet im übertragenen Sinne, um sich selbst aus der news, aufgrund der eher informellen Austausch.\
     Während des Spiels werden die Spieler (ist gut), und eine Linie oder einen Kreis. Ein Spieler denkt sich eine Nachricht. Dieser Beitrag ist jetzt in der Luft von Mund zu Ohr von einem Teilnehmer in Ihrer Nachbarschaft. Das Spiel errechnet sich nach der folgenden Erklärung, die in einer oder mehr der Letzte der Serie, laut, was ist die Letzte Nachricht, die in Ihr Ohr. Die Entwicklung der Verzerrung der original-Nachricht werden kann, dokumentiert die Tatsache, dass jeder Teilnehmer immer wieder die Nachricht bekommen, nach der Bestellung, und es wird auch die Anzahl der Lachs die Auswirkungen der Aufstieg.",
     supportModalTitle: 'Hallo',
