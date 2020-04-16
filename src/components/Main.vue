@@ -384,6 +384,8 @@ export default {
         return;
       }
 
+      this.trackTranslationEvent();
+      
       this.translationInProgress = true;
       this.errorNoText = false;
       this.errorNoLanguage = false;
@@ -469,7 +471,12 @@ export default {
     setDonationModalDisabled() {
       window.localStorage.setItem("donationModalDisabled", true);
       this.showDonationModal = false;
-    }
+    },
+    trackTranslationEvent() {
+      const details = `Rounds: ${this.translationRounds}, Total Count: ${this.translationCount}`;
+      // eslint-disable-next-line no-underscore-dangle
+      window._paq.push(['trackEvent', 'badtranslator', 'Translate', details]);
+    },
   }
 };
 </script>
