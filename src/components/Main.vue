@@ -223,7 +223,7 @@
           >{{ $t('thinkingAboutDonating') }} 🙂</button>
           <button
             class="button is-danger"
-            @click="setDonationModalDisabled()"
+            @click="setDonationModalPostponed()"
           >{{ $t('wontDonate') }} 😢</button>
         </footer>
       </div>
