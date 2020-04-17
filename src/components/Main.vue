@@ -465,7 +465,7 @@ export default {
       }
     },
     setDonationModalPostponed() {
-      window.localStorage.setItem("donationModalInterval", 30);
+      window.localStorage.setItem("donationModalInterval", 20);
       this.showDonationModal = false;
     },
     setDonationModalDisabled() {
