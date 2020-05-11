@@ -99,17 +99,17 @@
         </div>
       </div>
     </div>
-    <div class="columns is-mobile">
+    <div class="columns">
       <div class="column">
         <div id="translation-steps">
           <div
             class="step"
-            v-for="step in steps"
+            v-for="(step, idx) in steps"
             :key="`${step.from}-${step.to}`"
             @click="step.textVisible = !step.textVisible"
             :title="`Show ${step.to} translation`"
           >
-            <div class="columns is-mobile">
+            <div class="columns">
               <div class="board from column">
                 <div
                   class="letter"
@@ -117,8 +117,9 @@
                   :key="`from-${letter}-${Math.round(Math.random()*100000)}`"
                 >{{letter.replace(" ", "_")}}</div>
               </div>
-              <i class="fa fa-arrow-right column is-narrow"></i>
-              <div class="board to column">
+              <i class="fa fa-arrow-right column is-narrow is-hidden-mobile"></i>
+              <i class="fa fa-arrow-down column is-narrow is-hidden-tablet"></i>
+              <div :class="{'board': true, 'to': true, 'column': true, 'is-hidden-mobile': (idx !== steps.length - 1)}">
                 <div
                   class="letter"
                   v-for="letter in step.to"
@@ -267,6 +268,7 @@ export default {
       errorMessages: [],
       showDonationModal: false,
       translationCount: 0,
+      specialCommand: "💩",
       selectedExampleIdx: -1,
       examples: [
         {
@@ -378,7 +380,7 @@ export default {
         return;
       }
 
-      if (this.inputText.length > this.maxInputLength) {
+      if (!this.inputText.startsWith(this.specialCommand) && this.inputText.length > this.maxInputLength) {
         this.errorMessages.push(
           `Your text is too long. Maximum is ${this.maxInputLength} characters.`
         );
