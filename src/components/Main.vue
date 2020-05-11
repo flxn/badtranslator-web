@@ -83,6 +83,7 @@
                 :placeholder="$t('textInputPlaceholder')"
                 v-model="inputText"
                 @change="onInputTextChanged"
+                @focus="selectText"
               ></textarea>
               <span class="counter">{{inputText.length}}/{{maxInputLength}}</span>
             </div>
@@ -476,6 +477,9 @@ export default {
       const details = `Rounds: ${this.translationRounds}, Total Count: ${this.translationCount}`;
       // eslint-disable-next-line no-underscore-dangle
       window._paq.push(['trackEvent', 'badtranslator', 'Translate', details]);
+    },
+    selectText(e) {
+      e.target.select();
     },
   }
 };

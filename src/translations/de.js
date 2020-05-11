@@ -15,11 +15,11 @@ export default {
     translationRoundsHelp: 'Wähle wie viele Runden übersetzt werden sollen.',
     translationRounds: 'Übersetze {n}-mal',
     useExample: 'Benutze ein Beispiel (momentan nur Englisch)',
-    textInputPlaceholder: 'Gebe hier den Text ein, den du übersetzen willst',
+    textInputPlaceholder: 'Gib hier den Text ein, den du übersetzen willst',
     translateButton: 'Übersetzen!',
     shareTranslation: 'Teile diese Übersetzung',
     shareTranslationTitle: 'Das kommt dabei raus, wenn man einen Text durch zufällige Sprachen übersetzt',
-    tryAgain: 'Probere es nochmal mit anderen Sprachen!',
+    tryAgain: 'Versuche es nochmal mit anderen Sprachen!',
     tryAgainDescription: 'Das Ergebnis ist zu verrückt? Versuche es nochmal mit weniger Übersetzungsrunden.<br />Nicht verrückt genug? Erhöhe die Zahl der Runden.',
     howItWorksTitle: 'Wie funktioniert das?',
     howItWorksParagraph1: 'Diese Seite orientiert sich am Spiel <em>Stille Post</em>, nur halt mit Online Übersetzern statt mit echten Menschen.\
