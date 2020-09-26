@@ -143,7 +143,7 @@
             style="margin-top: 30px"
             :callToAction="$t('shareTranslation')"
             :title="$t('shareTranslationTitle')"
-            :text="outputText"
+            :text="outputText + ' (Translated with badtranslator.net)'"
           />
           <button
             :class="{'button': true, 'is-primary': true, 'is-loading': translationInProgress}"
@@ -388,7 +388,7 @@ export default {
       }
 
       this.trackTranslationEvent();
-      
+
       this.translationInProgress = true;
       this.errorNoText = false;
       this.errorNoLanguage = false;
