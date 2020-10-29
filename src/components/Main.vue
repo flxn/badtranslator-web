@@ -255,7 +255,7 @@ export default {
       broken4: this.randomTransform(),
       globeEmoji: ["🌍", "🌏", "🌎"],
       animationRunning: true,
-      maxInputLength: 1000,
+      maxInputLength: 600,
       availableLanguages: {},
       translationRounds: 5,
       inputLanguage: window.localStorage.getItem("lang") || "",
@@ -290,7 +290,7 @@ export default {
           text:
             "Our Father in heaven,\nhallowed be your name,\nyour kingdom come,\nyour will be done,\non earth as in heaven.\nGive us today our daily bread.\nForgive us our sins\nas we forgive those who sin against us.\nSave us from the time of trial\nand deliver us from evil.\nFor the kingdom, the power, and the glory are yours\nnow and for ever. Amen."
         },
-        {
+        /*{
           title: "Pride and Prejudice",
           text: "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.\nHowever little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families that he is considered as the rightful property of some one or other of their daughters.\n\"My dear Mr. Bennet,\" said his lady to him one day, \"have you heard that Netherfield Park is let at last?\"\nMr. Bennet replied that he had not.\n\"But it is,\" returned she; \"for Mrs. Long has just been here, and she told me all about it.\"\nMr. Bennet made no answer."
         },
@@ -301,7 +301,7 @@ export default {
         {
           title: "Macaroni And Cheese Recipe",
           text: "Ingredients:\n1/2 pound cheddar cheese, grated\n1 teaspoon cornstarch\n2 quarts water\n1 tablespoon salt\n2 cups uncooked elbow macaroni\n2 tablespoons unsalted butter\n2 tablespoons flour\n1 1/4 cup milk, heated until steamy\n1/2 teaspoon lemon juice\n1/4 cup ham\n\nIn a medium sized bowl, mix cornstarch with the grated cheese. The cornstarch will help the cheese from getting too stringy.\nHeat 2 quarts of water with a tablespoon of salt to a rolling boil in thick-bottomed saucepan. \nAdd 2 cups of elbow macaroni and follow the cooking time instructions on the package, minus about 2 minutes.\nWhile the macaroni is cooking, prepare the sauce: Melt 2 Tbsp butter in a large saucepan on medium heat. Whisk in 2 Tbsp flour. Let cook for about a minute.\nSlowly dribble in 1 1/4 cups milk, while whisking until the sauce is smooth.\nSlowly add the grated cheese, whisking until smooth. Stir in the lemon juice.\nAdd the cooked macaroni and ham to the cheese sauce. Stir to combine.",
-        }
+        }*/
       ],
     };
   },
